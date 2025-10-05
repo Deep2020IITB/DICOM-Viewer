@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""PyDICOM.py
+"""app.py
 
 Streamlit-based DICOM Viewer
 """
@@ -14,7 +14,7 @@ import streamlit as st
 import tempfile
 import shutil
 
-# Streamlit page configuration
+# Streamlit page configuration (must be the first Streamlit command)
 st.set_page_config(page_title="DICOM Viewer", layout="wide")
 
 # Initialize session state for persistent variables
