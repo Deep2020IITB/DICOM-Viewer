@@ -80,6 +80,11 @@ def extract_and_list_series(uploaded_file):
         st.error(f"No folder containing DICOM (.dcm) files found in {extract_path}.")
         return series_groups, series_custom_names
 
+    # Verify pydicom.dcmread is available
+    if not hasattr(pydicom, 'dcmread'):
+        st.error("Error: pydicom.dcmread is not available. Ensure pydicom>=1.0.0 is installed correctly.")
+        return series_groups, series_custom_names
+
     # Group DICOM files by SeriesInstanceUID
     for subdir, _, files in os.walk(study_folder):
         for file in files:
@@ -128,6 +133,11 @@ def process_series(series_uid, series_groups, series_custom_names):
     selected_series_desc = series_custom_names.get(series_uid,
         series_groups[series_uid][0][1].get('SeriesDescription',
         os.path.basename(os.path.dirname(series_groups[series_uid][0][0]))))
+
+    # Verify pydicom.dcmread is available
+    if not hasattr(pydicom, 'dcmread'):
+        st.error("Error: pydicom.dcmread is not available. Ensure pydicom>=1.0.0 is installed correctly.")
+        return None, None
 
     # Load pixel data
     volume = []
