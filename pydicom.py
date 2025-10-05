@@ -3,7 +3,7 @@
 
 Streamlit-based DICOM Viewer
 """
-!pip install streamlit pydicom matplotlib numpy nibabel -q
+pip install streamlit pydicom matplotlib numpy nibabel -q
 
 import os
 import zipfile
