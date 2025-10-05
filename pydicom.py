@@ -13,6 +13,9 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import tempfile
 import shutil
+import pydicom
+st.write(f"pydicom version: {pydicom.__version__}")
+st.write(f"pydicom.dcmread exists: {hasattr(pydicom, 'dcmread')}")
 
 # Streamlit page configuration (must be the first Streamlit command)
 if not hasattr(st.session_state, 'page_config_set'):
