@@ -15,7 +15,9 @@ import tempfile
 import shutil
 
 # Streamlit page configuration (must be the first Streamlit command)
-st.set_page_config(page_title="DICOM Viewer", layout="wide")
+if not hasattr(st.session_state, 'page_config_set'):
+    st.set_page_config(page_title="DICOM Viewer", layout="wide")
+    st.session_state.page_config_set = True
 
 # Initialize session state for persistent variables
 if 'series_groups' not in st.session_state:
